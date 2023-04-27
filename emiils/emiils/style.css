@@ -1,0 +1,25 @@
+html{
+    --krasa: rgb(72, 255, 0);
+    --header-height: 60px
+}
+
+html[data-theme="light"] {
+    --krasa: orange;
+}
+
+body{
+margin: 0%;
+
+}
+header{
+    width: 100vw;
+    height: var(--header-height);
+    background-color: orange;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+main {
+    margin-top: var(--header-height);
+}
