@@ -1,0 +1,89 @@
+CSS 
+
+body{
+    margin: 0;
+}
+:root /* = html*/{
+--height: 100px;
+}
+html[data-theme="light"] {
+    --col: rgb(195, 236, 9);
+    --col2: rgb(161, 201, 17);
+}
+html[data-theme="dark"]{
+    --col: rgb(45, 61, 6);
+    --col2: rgb(37, 104, 10);
+}
+header{
+    width: 100vw;
+    height: var(--height);
+    background-color: var(--col);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+main{
+    height: 100vh;
+    margin: 0;
+    margin-top: var(--height);
+    background-color: var(--col2);
+    color: white;
+}
+#cbox{
+    width:75px;
+    height:75px;
+}
+
+
+HTML
+
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light" id="html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="trip-quiz.css">
+    <script src="trip-quiz.js" defer></script>
+</head>
+<body>
+    <main>
+    <header>
+        <input id="cbox" type="checkbox" />
+    </header>
+    <div><h1>Yo</h1></div>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In voluptate placeat delectus quam asperiores aperiam labore reiciendis odio. Aspernatur repudiandae ex molestiae aperiam excepturi. Eligendi soluta maiores minus voluptate nihil?</p>
+    <h2>Peace</h2>
+    <h3></h3>
+</main>
+</body>
+</html>
+
+
+JS
+
+const toggleTheme = document.getElementById("cbox");
+const html = document.getElementById("html");
+toggleTheme.addEventListener("change", toggleThemeHandler)
+function toggleThemeHandler() {
+    if (toggleTheme.checked){
+        html.dataset.theme = "dark";
+    } else {
+    html.dataset.theme = "light";
+    localStorage.setItem("theme", "light");
+    }
+}
+
+const theme = localStorage.getItem("theme");
+
+if (theme == "light" || !theme) {
+    html.dataset.theme = "light";   
+} else {
+    html.dataset.theme = "dark";
+    document.getElementById("toggle-theme").checked = true;
+}
+
+
