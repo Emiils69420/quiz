@@ -1,44 +1,75 @@
+// Saglabā to checkboxu JS mainīgājā
+
 const toggleTheme = document.getElementById("toggle-theme");
+
 const html = document.getElementById("html");
 
 toggleTheme.addEventListener("change", toggleThemeHandler);
 
 function toggleThemeHandler() {
+
   if (toggleTheme.checked) {
+
     html.dataset.theme = "dark";
+
     localStorage.setItem("theme", "dark");
+
   } else {
+
     html.dataset.theme = "light";
+
     localStorage.setItem("theme", "light");
+
   }
+
 }
 
 const localStorageTheme = localStorage.getItem("theme");
 
 if (localStorageTheme == "light" || !localStorageTheme) {
+
   html.dataset.theme = "light";
+
 } else {
+
   html.dataset.theme = "dark";
+
   toggleTheme.checked = true;
+
 }
-const igaunija = document.getElementById("igaunija");
-igaunija.addEventListener("click", checkhandler);
 
-const uk = document.getElementById("uk"); 
-uk.addEventListener("click", checkhandler);
+const visasAtbildes = document.getElementsByName("1");
 
-const liepaja = document.getElementById("liepaja"); 
-liepaja.addEventListener("click", checkhandler);
+console.log(visasAtbildes);
 
-const indonezija = document.getElementById("indonezija"); 
-indonezija.addEventListener("click", checkhandler);
+visasAtbildes.forEach(atbilde => {
 
-function checkhandler() {
-  if(igaunija.checked == true) {
-igaunija.parentNode.style.backgroundcolor = "red";
+  atbilde.addEventListener("click", checkHandler)
 
-  }else{
-igaunija.parentNode.style.backgroundcolor = "var(--secondary-color)";
+});
 
-  }
+function checkHandler(){
+
+  visasAtbildes.forEach(atbilde => {
+
+    if (atbilde.checked == true) {
+
+      if(atbilde.value == "indonezija"){
+
+        atbilde.parentNode.style.backgroundColor = "green";
+
+      }else{
+
+        atbilde.parentNode.style.backgroundColor = "red";
+
+      }
+
+    }else{
+
+      atbilde.parentNode.style.backgroundColor = "var(--secondary)"
+
+    }
+
+  });
+
 }
